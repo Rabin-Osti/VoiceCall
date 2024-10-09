@@ -44,9 +44,11 @@ export default function Home() {
       userInfo.userName
     );
 
-    zeroCloudInstance.current = ZegoUIKitPrebuilt.create(KitToken);
+    // zeroCloudInstance.current = ZegoUIKitPrebuilt.create(KitToken);
+    let zegoInstance = ZegoUIKitPrebuilt.create(KitToken);
     // add plugin
-    zeroCloudInstance.current.addPlugins({ ZIM });
+    // zeroCloudInstance.current.addPlugins({ ZIM });
+    zegoInstance.addPlugins({ ZIM });
     const callee = calleeId;
     if (!callee) {
       alert("userID cannot be empty!!");
@@ -54,7 +56,7 @@ export default function Home() {
     }
 
     // send call invitation
-    zeroCloudInstance.current
+    zegoInstance
       .sendCallInvitation({
         callees: [{ userID: callee, userName: "user_" + callee }],
         callType: callType,
